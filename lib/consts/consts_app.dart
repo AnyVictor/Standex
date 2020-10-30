@@ -1,4 +1,4 @@
 class ConstsApp {
-  static const String blackladybug = 'assets/images/blackladybug.png';
-  static const String blackpeace = '1qassets/images/blackpeace.png';
+  static const String blackladybug = 'images/blackladybug.png';
+  static const String blackpeace = 'images/blackpeace.png';
 }
