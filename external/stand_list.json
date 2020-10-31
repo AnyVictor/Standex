@@ -1,0 +1,48 @@
+{
+    "stand": [
+        {
+            "id": 1,
+            "name": "Star Platinum",
+            "user": "Jotaro Kujo",
+            "destructive power": "A",
+            "speed": "A",
+            "range": "c",
+            "power persistence": "A",
+            "precision": "A",
+            "developmental potential": "A"
+        },
+        {
+            "id": 2,
+            "name": "Heaven's Door",
+            "user": "Rohan Kishibe",
+            "destructive power": "D",
+            "speed": "B",
+            "range": "B",
+            "power persistence": "B",
+            "precision": "C",
+            "developmental potential": "A"
+        },
+        {
+            "id": 3,
+            "name": "Gold Experience Requiem",
+            "user": "Giorno Giovanna,",
+            "destructive power": "Null",
+            "speed": "Null",
+            "range": "Null",
+            "power persistence": "Null",
+            "precision": "Null",
+            "developmental potential": "Null"
+        },
+        {
+            "id": 4,
+            "name": "Killer Queen",
+            "user": "Yoshikage Kira",
+            "destructive power": "A",
+            "speed": "B",
+            "range": "D",
+            "power persistence": "B",
+            "precision": "B",
+            "developmental potential": "A"
+        }
+    ]
+}

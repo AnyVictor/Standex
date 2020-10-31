@@ -31,6 +31,26 @@ class HomePage extends StatelessWidget {
                   height: statusHeight,
                 ),
                 AppBarHome(),
+                Expanded(
+                  child: Container(
+                    child: ListView(
+                      children: [
+                        ListTile(
+                          title: Text("ahushaushau"),
+                        ),
+                        ListTile(
+                          title: Text("ahushaushau"),
+                        ),
+                        ListTile(
+                          title: Text("ahushaushau"),
+                        ),
+                        ListTile(
+                          title: Text("ahushaushau"),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),

@@ -5,7 +5,7 @@ class AppBarHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 42, right: 18, left: 18),
-      height: 200,
+      height: 170,
       child: Column(
         children: [
           Container(
