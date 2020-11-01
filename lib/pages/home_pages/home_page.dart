@@ -4,6 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:standex/consts/consts_app.dart';
 import 'package:standex/models/standapi.dart';
 import 'package:standex/pages/home_pages/widgets/app_bar.dart';
+import 'package:standex/pages/home_pages/widgets/stand_item.dart';
 import 'package:standex/stores/standapi_store.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                                 child: GridView.builder(
                                   physics: BouncingScrollPhysics(),
                                   padding: EdgeInsets.all(12),
-                                  addAutomaticKeepAlives: false,
+                                  addAutomaticKeepAlives: true,
                                   gridDelegate:
                                       new SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2),
@@ -71,26 +72,18 @@ class _HomePageState extends State<HomePage> {
                                           const Duration(milliseconds: 375),
                                       columnCount: 2,
                                       child: ScaleAnimation(
-                                        child: ScaleAnimation(
-                                          child: GestureDetector(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Container(
-                                                color: Colors.blueGrey,
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (BuildContext
-                                                            context) =>
-                                                        Container() /*PokeDetailPage(index: index)*/,
-                                                    fullscreenDialog: true,
-                                                  ));
-                                            },
-                                          ),
+                                        child: GestureDetector(
+                                          child: StandItem(),
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      Container() /*PokeDetailPage(index: index)*/,
+                                                  fullscreenDialog: true,
+                                                ));
+                                          },
                                         ),
                                       ),
                                     );
