@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:standex/consts/consts_app.dart';
 
 class StandItem extends StatelessWidget {
   final String name;
@@ -17,11 +18,15 @@ class StandItem extends StatelessWidget {
       child: Container(
         child: Stack(
           children: [
+            Opacity(
+              child: Image.asset(ConstsApp.techring),
+              opacity: 0.1,
+            ),
             image,
           ],
         ),
         decoration: BoxDecoration(
-          color: Colors.blueGrey,
+          color: Colors.pink[50],
           borderRadius: BorderRadius.all(
             Radius.circular(20),
           ),
