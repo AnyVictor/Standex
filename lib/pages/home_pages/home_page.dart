@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:standex/consts/consts_app.dart';
+import 'package:standex/models/standapi.dart';
 import 'package:standex/pages/home_pages/widgets/app_bar.dart';
+import 'package:standex/stores/standapi_store.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  StandApiStore standApiStore;
+  @override
+  void initState() {
+    super.initState();
+    standApiStore = StandApiStore();
+    standApiStore.fetchStandList();
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -33,21 +49,21 @@ class HomePage extends StatelessWidget {
                 AppBarHome(),
                 Expanded(
                   child: Container(
-                    child: ListView(
-                      children: [
-                        ListTile(
-                          title: Text("ahushaushau"),
-                        ),
-                        ListTile(
-                          title: Text("ahushaushau"),
-                        ),
-                        ListTile(
-                          title: Text("ahushaushau"),
-                        ),
-                        ListTile(
-                          title: Text("ahushaushau"),
-                        ),
-                      ],
+                    child: Observer(
+                      builder: (BuildContext context) {
+                        StandAPI _standApi = standApiStore.standAPI;
+                        return (_standApi != null)
+                            ? ListView.builder(
+                                itemCount: _standApi.stand.length,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    title: Text(_standApi.stand[index].name),
+                                  );
+                                })
+                            : Center(
+                                child: CircularProgressIndicator(),
+                              );
+                      },
                     ),
                   ),
                 )
