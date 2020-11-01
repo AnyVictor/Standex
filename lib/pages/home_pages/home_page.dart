@@ -66,6 +66,8 @@ class _HomePageState extends State<HomePage> {
                                   itemCount: standApiStore.standAPI.stand
                                       .length, //pokeApiStore.pokeAPI.pokemon.length
                                   itemBuilder: (context, index) {
+                                    Stand stand =
+                                        standApiStore.getStand(index: index);
                                     return AnimationConfiguration.staggeredGrid(
                                       position: index,
                                       duration:
@@ -73,7 +75,12 @@ class _HomePageState extends State<HomePage> {
                                       columnCount: 2,
                                       child: ScaleAnimation(
                                         child: GestureDetector(
-                                          child: StandItem(),
+                                          child: StandItem(
+                                            index: index,
+                                            name: stand.name,
+                                            image: standApiStore.getImage(
+                                                number: stand.id),
+                                          ),
                                           onTap: () {
                                             Navigator.push(
                                                 context,

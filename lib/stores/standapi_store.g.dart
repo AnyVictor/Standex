@@ -39,6 +39,28 @@ mixin _$StandApiStore on _StandApiStoreBase, Store {
   }
 
   @override
+  dynamic getStand({int index}) {
+    final _$actionInfo = _$_StandApiStoreBaseActionController.startAction(
+        name: '_StandApiStoreBase.getStand');
+    try {
+      return super.getStand(index: index);
+    } finally {
+      _$_StandApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Widget getImage({int number}) {
+    final _$actionInfo = _$_StandApiStoreBaseActionController.startAction(
+        name: '_StandApiStoreBase.getImage');
+    try {
+      return super.getImage(number: number);
+    } finally {
+      _$_StandApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 standAPI: ${standAPI}
