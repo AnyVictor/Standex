@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:standex/consts/consts_app.dart';
 import 'package:standex/models/standapi.dart';
 import 'package:standex/pages/home_pages/widgets/app_bar.dart';
@@ -53,13 +54,49 @@ class _HomePageState extends State<HomePage> {
                       builder: (BuildContext context) {
                         StandAPI _standApi = standApiStore.standAPI;
                         return (_standApi != null)
-                            ? ListView.builder(
-                                itemCount: _standApi.stand.length,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                    title: Text(_standApi.stand[index].name),
-                                  );
-                                })
+                            ? AnimationLimiter(
+                                child: GridView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  padding: EdgeInsets.all(12),
+                                  addAutomaticKeepAlives: false,
+                                  gridDelegate:
+                                      new SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2),
+                                  itemCount: standApiStore.standAPI.stand
+                                      .length, //pokeApiStore.pokeAPI.pokemon.length
+                                  itemBuilder: (context, index) {
+                                    return AnimationConfiguration.staggeredGrid(
+                                      position: index,
+                                      duration:
+                                          const Duration(milliseconds: 375),
+                                      columnCount: 2,
+                                      child: ScaleAnimation(
+                                        child: ScaleAnimation(
+                                          child: GestureDetector(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                color: Colors.blueGrey,
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        Container() /*PokeDetailPage(index: index)*/,
+                                                    fullscreenDialog: true,
+                                                  ));
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
                             : Center(
                                 child: CircularProgressIndicator(),
                               );

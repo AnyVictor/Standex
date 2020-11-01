@@ -13,7 +13,9 @@ abstract class _StandApiStoreBase with Store {
 
   @action
   fetchStandList() {
+    //
     loadStandAPI().then((stand_list) {
+      //passa o objeto para o observable
       standAPI = stand_list;
     });
   }
@@ -21,8 +23,10 @@ abstract class _StandApiStoreBase with Store {
   Future<StandAPI> loadStandAPI() async {
     try {
       final response = await http.get(ConstsAPI.standapiURL);
-      var decodeJson = jsonDecode(response.body);
-      return StandAPI.fromJson(decodeJson);
+      var decodeJson = jsonDecode(
+          response.body); //pega o json e tras para o app dinamicamente
+      return StandAPI.fromJson(
+          decodeJson); // pega o json e transforma na classe
     } catch (error) {
       print("Error on loading list");
       return null;
